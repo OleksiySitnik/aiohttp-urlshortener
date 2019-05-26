@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+        {{ user.password_hash }} {{ user.username }}
+        {% for url1 in urls %}
+        <p>{{ url1.url[:30] }}...  {{ url1.timestamp|datetimeformat }}</p><a href="{{ url1.url }}">{{ url1.short_url }}</a>
+        {% endfor %}
+</h1>
+{% endblock %}

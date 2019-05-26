@@ -1,0 +1,26 @@
+
+<html>
+    <head>
+        <title>Url Shortener</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <div>
+            <div>
+                <a href="{{ url('urlshortener') }}">Urlshortener</a>
+            {% if current_user.is_anonymous %}
+                <a href="{{ url('login') }}">Login</a>
+                <a href="{{ url('signup') }}">Sign Up</a>
+            {% else %}
+                <a href="{{ url('index') }}">Home</a>
+                <a href="{{ url('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+        </div>
+        <hr>
+
+    {% block content %}{% endblock %}
+
+    </body>
+</html>

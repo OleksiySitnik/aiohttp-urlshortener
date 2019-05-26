@@ -1,0 +1,9 @@
+postgres:
+  database: aiohttp_db_test
+  user: aiohttp_user
+  password: aiohttp_pass
+  host: 127.0.0.1
+  port: 5432
+
+host: 0.0.0.0
+port: 8080

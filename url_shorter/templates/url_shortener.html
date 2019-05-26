@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+   $(function() {
+     $('#submitButton').click(function() {
+         $.ajax({
+             type: "POST",
+             url: "/short",
+             data: JSON.stringify({'url' : $('#url').val()}),
+             success: returnSuccess,
+             dataType: 'json',
+             contentType: "application/json",
+         });
+     });
+});
+
+function returnSuccess(data, textStatus, jqXHR) {
+    if(data.url) {
+        $('#url-result').text(data.url);
+        $('#url').val("");
+        $("a").attr("href", data.long_url)
+    } else {
+        $('#url-result').text("Please enter a URL!");
+    }
+}
+</script>
+
+    <h1>URLshortener</h1>
+<label for="url">Enter url:</label><br>
+<input id="url" name="url" type="text" value="" autofocus/>
+<button id="submitButton">shorten</button>
+<a href="#" id="url-result"></a>
+{% endblock %}
